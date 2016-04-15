@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <title>grufly</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script type="text/javascript" src="app/assets/javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/bootstrap.min.css">
+    <script>
+    
+  $(function() {
+    var availableTags = [
+      <% @airports.each do |airport| %>
+      "<%= airport.airport_name; %> <%= airport.city; %> <%=airport.country_airport; %> ",
+
+      
+      <% end %>
+    ];
+    $( ".tags" ).autocomplete({
+      source: availableTags,
+      minLength: 3
+    });
+  });
+  </script>
+    <script>
+  $(function() {
+    $( ".datepicker" ).datepicker();
+  });
+  </script>
+    <script>
+  $(function() {
+    $( "#speed" ).selectmenu();
+ 
+    $( "#files" ).selectmenu();
+ 
+    $( "#number" )
+      .selectmenu()
+      .selectmenu( "menuWidget" )
+        .addClass( "overflow" );
+  });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="container"> 
+
+  <h1>Book Fly</h1>
+  
+
+  <div class="flytype_section">
+    <input name="tripType" id="tripTyperoundTrip" value="roundTrip" onclick="$('.return_date').show()" class="return return-select radius-2px" checked="checked" type="radio">
+    <label for="tripTyperoundTrip">Round Trip</label>
+    <input name="tripType" id="tripTypeoneway" value="oneway" onclick="$('.return_date').hide()" class="one_way oneway radius-2px oneway-select" type="radio">
+    <label for="tripTypeoneway">One way</label>
+  </div> 
+
+
+
+  <%= form_for :reservation , url: 'save' do |f| %>
+
+
+  <p>
+    <%= f.label :flying_from %><br>
+    <%= f.text_field :flying_from, :class => 'tags' %>
+  </p>
+ 
+  <p>
+    <%= f.label :flying_to %><br>
+    <%= f.text_field :flying_to, :class => 'tags' %>
+  </p>
+
+  <p >
+Departure Date:<br>
+
+   <input type="text" class="datepicker"></p><br>
+
+  <P class="return_date">
+Return Date:<br>
+
+   <input type="text" class="datepicker" ></p>
+
+
+   <form action="#">
+  <fieldset>
+    <label for="Class">Class:</label>
+    <select name="class" id="class">
+      <option>Economy</option>
+      <option>Business</option>
+      
+      <option>First</option>
+      
+    </select>
+      </fieldset>
+
+
+       <fieldset>
+    <label for="Class">Travelers:<br></label>
+    <select name="class" id="class">
+      <option>1 Adult</option>
+      <option>2 Adults</option>
+      
+      <option>3 Adults</option>
+      <option>4 Adults</option>
+      <option>5 Adults</option>
+      <option>6 Adults</option>
+      <option>7 Adults</option>
+      <option>8 Adults</option>
+      <option>9 Adults</option>  
+    </select>
+   <select name="class" id="class">
+      <option>0 childern</option>
+      <option>1 child</option>
+      <option>3 childern </option> 
+      <option>2 childern </option>
+      <option>4 childern </option>
+      <option>5 childern</option>
+      <option>6 childern</option>
+      <option>7 childern</option>
+      <option>8 childern</option>
+      <option>9 childern</option>
+     
+    </select>
+    <select name="class" id="class">
+      <option>0 Infants</option>
+      <option>1 Infant</option>
+
+    
+    </select>
+      </fieldset>
+ 
+</form>
+
+
+  <p>
+    <%= f.submit %>
+  </p>
+   </div>
+<% end %>
+
+
+
+</body>
+</html>

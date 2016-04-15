@@ -1,0 +1,50 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Grufly</title>
+
+<style>
+.grufly{
+   float: left;
+   margin: 10px;
+   padding: 10px;
+
+  
+
+}   
+</style>
+</head>
+<body>
+ <div class="container"> 
+<h1>Grufly</h1>
+
+
+
+
+
+<%= form_for :test do |f| %>
+
+
+
+  
+
+
+
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_area :subject %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  </div>
+<% end %>

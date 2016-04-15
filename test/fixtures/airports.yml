@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  airport_name: MyString
+  city: MyString
+  country: MyString
+
+two:
+  airport_name: MyString
+  city: MyString
+  country: MyString
